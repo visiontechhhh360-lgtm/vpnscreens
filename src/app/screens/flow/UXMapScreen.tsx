@@ -177,19 +177,22 @@ export function UXMapScreen() {
               <h3 className="text-lg font-bold text-[#3B82F6]">Authentication</h3>
             </div>
             
-            <div className="flex items-start justify-center gap-3">
+            <div className="flex items-center justify-center ">
               {/* Login */}
-              <div className="flex flex-col items-center">
-                <MiniScreen screen={flowScreens.auth[0]} />
-              </div>
+              <div className="flex flex-col items-center gap-4">
+  <div className="text-center">
+    <p className="text-[10px] font-semibold text-[#3B82F6] mb-2">Login</p>
+  </div>
+  <MiniScreen screen={flowScreens.auth[0]} />
+</div>
 
-              <div className="flex flex-col justify-center gap-2 pt-20">
+              
                 <div className="flex items-center gap-2">
                   <ConnectionLine />
-                  <ArrowRight className="w-4 h-4 text-[#64748B]" />
+                  <ArrowRight className="w-3 h-3 text-[#64748B]" />
                   <ConnectionLine />
                 </div>
-              </div>
+              
 
               {/* Create Account Flow */}
               <div className="flex flex-col items-center gap-4">
@@ -197,13 +200,13 @@ export function UXMapScreen() {
                   <p className="text-[10px] font-semibold text-[#3B82F6] mb-2">Sign Up Flow</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  {flowScreens.auth.slice(1, 4).map((screen, idx) => (
-                    <div key={screen.id} className="flex items-center gap-2">
-                      <MiniScreen screen={screen} />
-                      {idx < 2 && <ArrowRight className="w-3 h-3 text-[#94A3B8]" />}
-                    </div>
-                  ))}
-                </div>
+  {flowScreens.auth.slice(1, 4).map((screen, idx) => (
+    <div key={screen.id} className="flex items-center gap-2">
+      <MiniScreen screen={screen} />
+      {idx < 2 && <ArrowRight className="w-3 h-3 text-[#94A3B8]" />}
+    </div>
+  ))}
+</div>
               </div>
             </div>
 

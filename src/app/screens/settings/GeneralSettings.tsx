@@ -1,12 +1,27 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Switch } from "../../components/ui/switch";
-import { Shield, Zap, Bell, Sun, ChevronRight } from "lucide-react";
+import { Shield, Zap, Bell, Sun, ChevronRight, LogOut } from "lucide-react";
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router";
+import { toast } from "sonner";
 
 export function GeneralSettings() {
+  const navigate = useNavigate();
+  const { logout } = useAuth();
   const [autoConnect, setAutoConnect] = useState(false);
   const [killSwitch, setKillSwitch] = useState(true);
   const [notifications, setNotifications] = useState(true);
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      toast.success("Logged out successfully");
+      navigate("/auth/login");
+    } catch (error) {
+      toast.error("Failed to logout");
+    }
+  };
 
   return (
     <motion.div
@@ -69,6 +84,24 @@ export function GeneralSettings() {
         </div>
         <ChevronRight className="w-5 h-5 text-[#64748B]" />
       </div>
+
+      {/* Logout */}
+      <motion.button
+        onClick={handleLogout}
+        whileTap={{ scale: 0.98 }}
+        className="w-full bg-white rounded-xl p-4 border border-[#E2E8F0] flex items-center justify-between"
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-[#EF4444]/10 rounded-full flex items-center justify-center">
+            <LogOut className="w-5 h-5 text-[#EF4444]" />
+          </div>
+          <div className="text-left">
+            <p className="text-[#0F172A] font-medium">Logout</p>
+            <p className="text-sm text-[#64748B]">Sign out of your account</p>
+          </div>
+        </div>
+        <ChevronRight className="w-5 h-5 text-[#64748B]" />
+      </motion.button>
     </motion.div>
   );
 }
