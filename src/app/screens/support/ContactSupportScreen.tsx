@@ -16,7 +16,7 @@ export function ContactSupportScreen() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const contactMethods = [
     {
@@ -62,20 +62,20 @@ export function ContactSupportScreen() {
 
     // Simulate submission
     setTimeout(() => {
-      setSubmitted(true);
+      setHasSubmitted(true);
       toast.success("Your message has been sent!");
     }, 1000);
   };
 
   const handleBack = () => {
-    if (selectedMethod && !submitted) {
+    if (selectedMethod && !hasSubmitted) {
       setSelectedMethod(null);
     } else {
-      navigate("/settings");
+      navigate("/main/settings");
     }
   };
 
-  if (submitted) {
+  if (hasSubmitted) {
     return (
       <div className="h-full flex flex-col relative overflow-hidden">
         <AnimatedBackground variant="green" />
@@ -108,7 +108,7 @@ export function ContactSupportScreen() {
             </div>
 
             <button
-              onClick={() => navigate("/settings")}
+              onClick={() => navigate("/main/settings")}
               className="w-full bg-gradient-to-r from-[#22C55E] to-[#16A34A] text-white rounded-xl p-4 font-medium shadow-xl shadow-green-500/30"
             >
               Back to Settings

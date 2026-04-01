@@ -222,7 +222,7 @@ export function PaymentSuccessScreen() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4 }}
-          onClick={() => navigate("/home")}
+          onClick={() => navigate("/main/home")}
           className="w-full max-w-sm bg-gradient-to-r from-[#22C55E] to-[#16A34A] text-white rounded-xl p-4 font-medium shadow-xl shadow-green-500/30"
           whileTap={{ scale: 0.98 }}
         >

@@ -149,7 +149,7 @@ export function HelpCenterScreen() {
         <div className="flex items-center gap-4 mb-6">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={() => navigate("/settings")}
+            onClick={() => navigate("/main/settings")}
             className="p-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm"
           >
             <ArrowLeft className="w-6 h-6 text-[#0F172A]" />
@@ -286,7 +286,7 @@ export function HelpCenterScreen() {
             <p className="text-white font-medium mb-2">Still need help?</p>
             <p className="text-white/80 text-sm mb-4">Our support team is available 24/7</p>
             <button
-              onClick={() => navigate("/contact-support")}
+              onClick={() => navigate("/main/contact-support")}
               className="w-full bg-white text-[#3B82F6] rounded-xl p-3 font-medium"
             >
               Contact Support

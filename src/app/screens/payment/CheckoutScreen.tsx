@@ -28,7 +28,7 @@ export function CheckoutScreen() {
     
     // Simulate payment processing
     setTimeout(() => {
-      navigate("/payment-success", { state: { plan, total } });
+      navigate("/main/payment-success", { state: { plan, total } });
     }, 2500);
   };
 

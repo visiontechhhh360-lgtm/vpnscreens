@@ -38,16 +38,16 @@ export function AccountScreen() {
   const badge = getStatusBadge();
 
   return (
-    <div className="h-full flex flex-col relative overflow-hidden">
+    <div className="h-full flex flex-col relative overflow-hidden bg-background">
       <AnimatedBackground variant="default" />
       
       <div className="relative z-10 flex flex-col h-full px-6 py-8 pb-4">
       {/* Header */}
       <div className="flex items-center gap-4 mb-6">
-        <button onClick={() => navigate("/settings")} className="p-2">
-          <ArrowLeft className="w-6 h-6 text-[#0F172A]" />
+        <button onClick={() => navigate("/main/settings")} className="p-2">
+          <ArrowLeft className="w-6 h-6 text-foreground" />
         </button>
-        <h1 className="text-2xl text-[#0F172A]">Account</h1>
+        <h1 className="text-2xl text-foreground">Account</h1>
       </div>
 
       {/* Profile Card */}
@@ -76,41 +76,40 @@ export function AccountScreen() {
         transition={{ delay: 0.1 }}
         className="space-y-3 flex-1"
       >
-        <div className="bg-white rounded-xl p-4 border border-[#E2E8F0]">
+        <div className="bg-card rounded-xl p-4 border border-border">
           <div className="flex items-center gap-3 mb-2">
             <Crown className="w-5 h-5 text-[#F59E0B]" />
-            <p className="text-sm text-[#64748B]">Subscription Status</p>
+            <p className="text-sm text-muted-foreground">Subscription Status</p>
           </div>
-          <p className="text-[#0F172A] font-medium capitalize">{user?.subscriptionStatus}</p>
+          <p className="text-foreground font-medium capitalize">{user?.subscriptionStatus}</p>
         </div>
 
         {user?.subscriptionExpiry && (
-          <div className="bg-white rounded-xl p-4 border border-[#E2E8F0]">
+          <div className="bg-card rounded-xl p-4 border border-border">
             <div className="flex items-center gap-3 mb-2">
               <Calendar className="w-5 h-5 text-[#3B82F6]" />
-              <p className="text-sm text-[#64748B]">Expiry Date</p>
+              <p className="text-sm text-muted-foreground">Expiry Date</p>
             </div>
-            <p className="text-[#0F172A] font-medium">{user.subscriptionExpiry}</p>
+            <p className="text-foreground font-medium">{user.subscriptionExpiry}</p>
           </div>
         )}
 
         <button
-          onClick={() => navigate("/subscription")}
+          onClick={() => navigate("/main/subscription")}
           className="w-full bg-[#22C55E] text-white rounded-xl p-4 font-medium"
         >
           Manage Subscription
         </button>
       </motion.div>
 
-      {/* Logout */}
+      {/* Logout Button */}
       <AlertDialog>
         <AlertDialogTrigger asChild>
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="w-full bg-white text-[#EF4444] border border-[#E2E8F0] rounded-xl p-4 font-medium flex items-center justify-center gap-2"
-            whileTap={{ scale: 0.98 }}
+            className="w-full bg-[#EF4444] text-white rounded-xl p-4 font-medium flex items-center justify-center gap-2 mt-4"
           >
             <LogOut className="w-5 h-5" />
             Logout
@@ -120,12 +119,12 @@ export function AccountScreen() {
           <AlertDialogHeader>
             <AlertDialogTitle>Logout</AlertDialogTitle>
             <AlertDialogDescription>
-              Are you sure you want to logout? You'll need to login again to use the VPN.
+              Are you sure you want to logout? You'll need to sign in again to use the app.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleLogout} className="bg-[#EF4444]">
+            <AlertDialogAction onClick={handleLogout}>
               Logout
             </AlertDialogAction>
           </AlertDialogFooter>

@@ -5,6 +5,7 @@ import { useVPN } from "../../contexts/VPNContext";
 import { ConnectButton } from "../../components/ConnectButton";
 import { toast } from "sonner";
 import { AnimatedBackground } from "../../components/AnimatedBackground";
+import { AppHeader } from "../../components/AppHeader";
 
 export function HomeScreen() {
   const navigate = useNavigate();
@@ -30,20 +31,29 @@ export function HomeScreen() {
   };
 
   return (
-    <div className="h-full flex flex-col relative overflow-hidden">
+    <div className="h-full flex flex-col relative overflow-hidden bg-background">
       <AnimatedBackground variant={status === "connected" ? "green" : "default"} />
       
       <div className="relative z-10 flex flex-col h-full px-6 py-8 pb-24">
+      {/* App Name Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-6"
+      >
+        <AppHeader />
+      </motion.div>
+
       {/* Status Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-8"
       >
-        <h1 className="text-2xl text-[#0F172A] mb-1">
+        <h1 className="text-2xl text-foreground mb-1">
           {status === "connected" ? "You're Protected!" : "Not Protected"}
         </h1>
-        <p className="text-sm text-[#64748B]">
+        <p className="text-sm text-muted-foreground">
           {status === "connected"
             ? "Your connection is secure and encrypted"
             : "Connect to a VPN server to secure your connection"}
@@ -55,22 +65,22 @@ export function HomeScreen() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        onClick={() => navigate("/servers")}
-        className="bg-white/90 backdrop-blur-sm rounded-xl p-4 mb-8 shadow-lg border-2 border-white/50 flex items-center justify-between"
+        onClick={() => navigate("/main/servers")}
+        className="bg-card/90 backdrop-blur-sm rounded-xl p-4 mb-8 shadow-lg border-2 border-border flex items-center justify-between"
         whileTap={{ scale: 0.98 }}
       >
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[#F8FAFC] rounded-full flex items-center justify-center">
+          <div className="w-10 h-10 bg-muted rounded-full flex items-center justify-center">
             <MapPin className="w-5 h-5 text-[#22C55E]" />
           </div>
           <div className="text-left">
-            <p className="text-xs text-[#64748B]">Location</p>
-            <p className="text-[#0F172A] font-medium">
+            <p className="text-xs text-muted-foreground">Location</p>
+            <p className="text-foreground font-medium">
               {selectedServer?.flag} {selectedServer?.country}
             </p>
           </div>
         </div>
-        <ChevronRight className="w-5 h-5 text-[#64748B]" />
+        <ChevronRight className="w-5 h-5 text-muted-foreground" />
       </motion.button>
 
       {/* Connect Button */}
@@ -95,35 +105,35 @@ export function HomeScreen() {
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
-            className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border-2 border-white/50 text-center"
+            className="bg-card/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border-2 border-border text-center"
           >
-            <p className="text-xs text-[#64748B] mb-1">Connection Time</p>
-            <p className="text-xl text-[#0F172A] font-medium">{formatTime(connectionTime)}</p>
+            <p className="text-xs text-muted-foreground mb-1">Connection Time</p>
+            <p className="text-xl text-foreground font-medium">{formatTime(connectionTime)}</p>
           </motion.div>
         )}
 
         {/* Stats Grid */}
         <div className="grid grid-cols-3 gap-3">
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border-2 border-white/50">
+          <div className="bg-card/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border-2 border-border">
             <Download className="w-5 h-5 text-[#22C55E] mb-2" />
-            <p className="text-xs text-[#64748B] mb-1">Download</p>
-            <p className="text-sm text-[#0F172A] font-medium">{downloadSpeed}</p>
+            <p className="text-xs text-muted-foreground mb-1">Download</p>
+            <p className="text-sm text-foreground font-medium">{downloadSpeed}</p>
           </div>
 
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border-2 border-white/50">
+          <div className="bg-card/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border-2 border-border">
             <Upload className="w-5 h-5 text-[#3B82F6] mb-2" />
-            <p className="text-xs text-[#64748B] mb-1">Upload</p>
-            <p className="text-sm text-[#0F172A] font-medium">{uploadSpeed}</p>
+            <p className="text-xs text-muted-foreground mb-1">Upload</p>
+            <p className="text-sm text-foreground font-medium">{uploadSpeed}</p>
           </div>
 
           <motion.button
             onClick={handleCopyIP}
             whileTap={{ scale: 0.95 }}
-            className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border-2 border-white/50 text-left"
+            className="bg-card/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border-2 border-border text-left"
           >
-            <Globe className="w-5 h-5 text-[#64748B] mb-2" />
-            <p className="text-xs text-[#64748B] mb-1">IP Address</p>
-            <p className="text-xs text-[#0F172A] font-medium truncate">{currentIP}</p>
+            <Globe className="w-5 h-5 text-muted-foreground mb-2" />
+            <p className="text-xs text-muted-foreground mb-1">IP Address</p>
+            <p className="text-xs text-foreground font-medium truncate">{currentIP}</p>
           </motion.button>
         </div>
       </motion.div>

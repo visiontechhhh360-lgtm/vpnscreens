@@ -8,30 +8,30 @@ import { AnimatedBackground } from "../../components/AnimatedBackground";
 
 export function SubscriptionScreen() {
   const navigate = useNavigate();
-  const { user, updateSubscription } = useAuth();
+  const { user } = useAuth();
   const [selectedPlan, setSelectedPlan] = useState<"monthly" | "yearly">("yearly");
 
   const handleStartTrial = () => {
-    navigate("/plan-selection");
+    navigate("/main/plan-selection");
   };
 
   const handleSubscribe = () => {
-    navigate("/plan-selection");
+    navigate("/main/plan-selection");
   };
 
   const showTrial = user?.subscriptionStatus === "free";
 
   return (
-    <div className="h-full flex flex-col relative overflow-hidden">
+    <div className="h-full flex flex-col relative overflow-hidden bg-background">
       <AnimatedBackground variant="green" />
       
-      <div className="relative z-10 flex flex-col h-full px-6 py-8 pb-4">
+      <div className="relative z-10 flex flex-col h-full px-6 py-8 pb-4 overflow-y-auto">
       {/* Header */}
       <div className="flex items-center gap-4 mb-6">
-        <button onClick={() => navigate("/settings")} className="p-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm">
-          <ArrowLeft className="w-6 h-6 text-[#0F172A]" />
+        <button onClick={() => navigate("/main/settings")} className="p-2 bg-card/80 backdrop-blur-sm rounded-full shadow-sm">
+          <ArrowLeft className="w-6 h-6 text-foreground" />
         </button>
-        <h1 className="text-2xl text-[#0F172A]">Subscription</h1>
+        <h1 className="text-2xl text-foreground">Subscription</h1>
       </div>
 
       {/* Trial Banner */}
@@ -80,9 +80,9 @@ export function SubscriptionScreen() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="space-y-3 flex-1"
+        className="space-y-3 flex-1 pb-4"
       >
-        <h2 className="text-lg text-[#0F172A] font-medium mb-4">Premium Plans</h2>
+        <h2 className="text-lg text-foreground font-medium mb-4">Premium Plans</h2>
 
         {/* Monthly Plan */}
         <button
@@ -90,17 +90,17 @@ export function SubscriptionScreen() {
           className={`w-full rounded-xl p-4 border-2 transition-all ${
             selectedPlan === "monthly"
               ? "border-[#22C55E] bg-[#22C55E]/5"
-              : "border-[#E2E8F0] bg-white/90 backdrop-blur-sm"
+              : "border-border bg-card/90 backdrop-blur-sm"
           }`}
         >
           <div className="flex items-center justify-between mb-2">
             <div className="text-left">
-              <p className="text-[#0F172A] font-medium">Monthly Plan</p>
-              <p className="text-sm text-[#64748B]">Billed monthly</p>
+              <p className="text-foreground font-medium">Monthly Plan</p>
+              <p className="text-sm text-muted-foreground">Billed monthly</p>
             </div>
             <div className="text-right">
-              <p className="text-2xl text-[#0F172A] font-bold">$9.99</p>
-              <p className="text-sm text-[#64748B]">/month</p>
+              <p className="text-2xl text-foreground font-bold">$9.99</p>
+              <p className="text-sm text-muted-foreground">/month</p>
             </div>
           </div>
           {selectedPlan === "monthly" && (
@@ -117,7 +117,7 @@ export function SubscriptionScreen() {
           className={`w-full rounded-xl p-4 border-2 transition-all relative overflow-hidden ${
             selectedPlan === "yearly"
               ? "border-[#22C55E] bg-[#22C55E]/5"
-              : "border-[#E2E8F0] bg-white/90 backdrop-blur-sm"
+              : "border-border bg-card/90 backdrop-blur-sm"
           }`}
         >
           <div className="absolute top-2 right-2 bg-[#F59E0B] text-white text-xs px-3 py-1 rounded-full">
@@ -125,12 +125,12 @@ export function SubscriptionScreen() {
           </div>
           <div className="flex items-center justify-between mb-2">
             <div className="text-left">
-              <p className="text-[#0F172A] font-medium">Yearly Plan</p>
-              <p className="text-sm text-[#64748B]">Billed annually</p>
+              <p className="text-foreground font-medium">Yearly Plan</p>
+              <p className="text-sm text-muted-foreground">Billed annually</p>
             </div>
             <div className="text-right">
-              <p className="text-2xl text-[#0F172A] font-bold">$5.99</p>
-              <p className="text-sm text-[#64748B]">/month</p>
+              <p className="text-2xl text-foreground font-bold">$5.99</p>
+              <p className="text-sm text-muted-foreground">/month</p>
             </div>
           </div>
           {selectedPlan === "yearly" && (
@@ -142,10 +142,10 @@ export function SubscriptionScreen() {
         </button>
 
         {/* Features */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border border-[#E2E8F0] mt-4">
+        <div className="bg-card/90 backdrop-blur-sm rounded-xl p-4 border border-border mt-4">
           <div className="flex items-center gap-2 mb-3">
             <Crown className="w-5 h-5 text-[#F59E0B]" />
-            <p className="text-[#0F172A] font-medium">Premium Features</p>
+            <p className="text-foreground font-medium">Premium Features</p>
           </div>
           <ul className="space-y-2">
             {[
@@ -158,7 +158,7 @@ export function SubscriptionScreen() {
             ].map((feature) => (
               <div key={feature} className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-[#22C55E]" />
-                <p className="text-sm text-[#64748B]">{feature}</p>
+                <p className="text-sm text-muted-foreground">{feature}</p>
               </div>
             ))}
           </ul>
@@ -172,7 +172,7 @@ export function SubscriptionScreen() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
           onClick={handleSubscribe}
-          className="w-full bg-[#22C55E] text-white rounded-xl p-4 font-medium shadow-lg shadow-[#22C55E]/30"
+          className="w-full bg-[#22C55E] text-white rounded-xl p-4 font-medium shadow-lg shadow-[#22C55E]/30 mt-4"
           whileTap={{ scale: 0.98 }}
         >
           Subscribe Now

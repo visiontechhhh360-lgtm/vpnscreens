@@ -6,7 +6,7 @@ import {
   Smartphone,
   Star,
   MessageCircle,
-  Book,
+  HelpCircle,
   ChevronRight,
 } from "lucide-react";
 
@@ -16,45 +16,45 @@ export function SupportSettings() {
   const items = [
     {
       icon: User,
-      label: "Account",
-      description: "Manage your account",
+      title: "Account",
+      description: "Manage your profile",
       color: "#22C55E",
-      action: () => navigate("/account"),
+      action: () => navigate("/main/account"),
     },
     {
       icon: CreditCard,
-      label: "Subscription",
-      description: "View plans & billing",
+      title: "Subscription",
+      description: "Manage your plan",
       color: "#3B82F6",
-      action: () => navigate("/subscription"),
+      action: () => navigate("/main/subscription"),
     },
     {
       icon: Smartphone,
-      label: "Setup Devices",
+      title: "Setup Devices",
       description: "Install on other devices",
       color: "#8B5CF6",
-      action: () => navigate("/setup-devices"),
+      action: () => navigate("/main/setup-devices"),
     },
     {
       icon: Star,
-      label: "Rate Us",
+      title: "Rate Us",
       description: "Share your feedback",
       color: "#F59E0B",
-      action: () => navigate("/rate-us"),
+      action: () => navigate("/main/rate-us"),
     },
     {
       icon: MessageCircle,
-      label: "Contact Support",
+      title: "Contact Support",
       description: "Get help from our team",
       color: "#EC4899",
-      action: () => navigate("/contact-support"),
+      action: () => navigate("/main/contact-support"),
     },
     {
-      icon: Book,
-      label: "Help Center",
+      icon: HelpCircle,
+      title: "Help Center",
       description: "FAQs and guides",
       color: "#06B6D4",
-      action: () => navigate("/help-center"),
+      action: () => navigate("/main/help-center"),
     },
   ];
 
@@ -68,12 +68,12 @@ export function SupportSettings() {
         const Icon = item.icon;
         return (
           <motion.button
-            key={item.label}
+            key={item.title}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
             onClick={item.action}
-            className="w-full bg-white/90 backdrop-blur-sm rounded-xl p-4 border-2 border-white/50 flex items-center justify-between shadow-lg"
+            className="w-full bg-card/90 backdrop-blur-sm rounded-xl p-4 border-2 border-border flex items-center justify-between shadow-lg"
             whileTap={{ scale: 0.98 }}
           >
             <div className="flex items-center gap-3">
@@ -84,19 +84,19 @@ export function SupportSettings() {
                 <Icon className="w-5 h-5" style={{ color: item.color }} />
               </div>
               <div className="text-left">
-                <p className="text-[#0F172A] font-medium">{item.label}</p>
-                <p className="text-sm text-[#64748B]">{item.description}</p>
+                <p className="text-foreground font-medium">{item.title}</p>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
               </div>
             </div>
-            <ChevronRight className="w-5 h-5 text-[#64748B]" />
+            <ChevronRight className="w-5 h-5 text-muted-foreground" />
           </motion.button>
         );
       })}
 
       {/* App Version */}
-      <div className="bg-white rounded-xl p-4 border border-[#E2E8F0] text-center">
-        <p className="text-sm text-[#64748B]">PureVPN VT</p>
-        <p className="text-xs text-[#64748B] mt-1">Version 1.0.0</p>
+      <div className="bg-card rounded-xl p-4 border border-border text-center">
+        <p className="text-sm text-muted-foreground">PureVPN VT</p>
+        <p className="text-xs text-muted-foreground mt-1">Version 1.0.0</p>
       </div>
     </motion.div>
   );

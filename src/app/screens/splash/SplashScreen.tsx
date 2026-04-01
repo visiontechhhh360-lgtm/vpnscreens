@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { motion } from "motion/react";
 import { Shield, Zap, Lock, Globe } from "lucide-react";
+import { useAuth } from "../../contexts/AuthContext";
 
 export function SplashScreen() {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -19,6 +23,22 @@ export function SplashScreen() {
     return () => clearInterval(interval);
   }, []);
 
+  // Navigate after splash completes
+  useEffect(() => {
+    if (progress === 100) {
+      // Wait a bit before navigating for smooth transition
+      const timeout = setTimeout(() => {
+        if (isAuthenticated) {
+          navigate("/main/home");
+        } else {
+          navigate("/auth/login");
+        }
+      }, 500);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [progress, isAuthenticated, navigate]);
+
   const features = [
     { icon: Shield, label: "Secure", delay: 0.2 },
     { icon: Zap, label: "Fast", delay: 0.4 },
@@ -27,7 +47,7 @@ export function SplashScreen() {
   ];
 
   return (
-    <div className="h-full w-full relative overflow-hidden bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A]">
+    <div className="h-full w-full relative overflow-hidden bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] dark:from-[#030712] dark:via-[#0F172A] dark:to-[#030712]">
       {/* Animated Gradient Orbs */}
       <motion.div
         animate={{
@@ -103,9 +123,9 @@ export function SplashScreen() {
             className="text-center"
           >
             <h1 className="text-5xl font-bold text-white mb-2">
-              Pure<span className="text-[#22C55E]">VPN</span>
+              WeeTee<span className="text-[#22C55E]">360</span>
             </h1>
-            <p className="text-xl text-white/60 font-light tracking-wider">VT</p>
+            <p className="text-xl text-white/60 font-light tracking-wider">VPN</p>
           </motion.div>
 
           {/* Feature Icons */}

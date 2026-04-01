@@ -43,7 +43,7 @@ export function VPNProvider({ children }: { children: React.ReactNode }) {
 
   // Connection timer
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     if (status === "connected") {
       interval = setInterval(() => {
         setConnectionTime((prev) => prev + 1);

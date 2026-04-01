@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import { AuthLayout } from "./layouts/AuthLayout";
 import { MainLayout } from "./layouts/MainLayout";
+import { PhoneFrame } from "./components/PhoneFrame";
 import { LoginScreen } from "./screens/auth/LoginScreen";
 import { CreateAccountScreen } from "./screens/auth/CreateAccountScreen";
 import { ForgotPasswordScreen } from "./screens/auth/ForgotPasswordScreen";
@@ -16,15 +17,28 @@ import { PaymentMethodScreen } from "./screens/payment/PaymentMethodScreen";
 import { PaymentDetailsScreen } from "./screens/payment/PaymentDetailsScreen";
 import { CheckoutScreen } from "./screens/payment/CheckoutScreen";
 import { PaymentSuccessScreen } from "./screens/payment/PaymentSuccessScreen";
-import { GooglePayProcessing } from "./screens/payment/GooglePayProcessing";
-import { ApplePayProcessing } from "./screens/payment/ApplePayProcessing";
+import { GooglePayForm } from "./screens/payment/GooglePayForm";
+import { ApplePayForm } from "./screens/payment/ApplePayForm";
 import { PaymentErrorScreen } from "./screens/payment/PaymentErrorScreen";
 import { ContactSupportScreen } from "./screens/support/ContactSupportScreen";
 import { HelpCenterScreen } from "./screens/support/HelpCenterScreen";
 import { SplashScreen } from "./screens/splash/SplashScreen";
 import { UXMapScreen } from "./screens/flow/UXMapScreen";
+import { SplitTunnelingScreen } from "./screens/settings/SplitTunnelingScreen";
 
 export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navigate to="/splash" replace />,
+  },
+  {
+    path: "/splash",
+    element: (
+      <PhoneFrame>
+        <SplashScreen />
+      </PhoneFrame>
+    ),
+  },
   {
     path: "/ux-map",
     Component: UXMapScreen,
@@ -40,10 +54,10 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/",
+    path: "/main",
     Component: MainLayout,
     children: [
-      { index: true, element: <Navigate to="/home" replace /> },
+      { index: true, element: <Navigate to="/main/home" replace /> },
       { path: "home", Component: HomeScreen },
       { path: "servers", Component: ServersScreen },
       { path: "settings", Component: SettingsScreen },
@@ -56,12 +70,12 @@ export const router = createBrowserRouter([
       { path: "payment-details", Component: PaymentDetailsScreen },
       { path: "payment-checkout", Component: CheckoutScreen },
       { path: "payment-success", Component: PaymentSuccessScreen },
-      { path: "google-pay-processing", Component: GooglePayProcessing },
-      { path: "apple-pay-processing", Component: ApplePayProcessing },
+      { path: "google-pay-processing", Component: GooglePayForm },
+      { path: "apple-pay-processing", Component: ApplePayForm },
       { path: "payment-error", Component: PaymentErrorScreen },
       { path: "contact-support", Component: ContactSupportScreen },
       { path: "help-center", Component: HelpCenterScreen },
-      { path: "splash-screen", Component: SplashScreen },
+      { path: "split-tunneling", Component: SplitTunnelingScreen },
     ],
   },
 ]);

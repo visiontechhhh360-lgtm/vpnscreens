@@ -7,7 +7,7 @@ export function AuthLayout() {
 
   // If authenticated, redirect to home
   if (isAuthenticated) {
-    return <Navigate to="/home" replace />;
+    return <Navigate to="/main/home" replace />;
   }
 
   return (

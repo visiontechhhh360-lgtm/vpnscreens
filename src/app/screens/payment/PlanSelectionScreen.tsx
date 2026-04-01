@@ -13,9 +13,9 @@ export function PlanSelectionScreen() {
   const handleContinue = () => {
     if (selectedPlan === "trial") {
       // Trial doesn't need payment
-      navigate("/payment-success", { state: { plan: "trial" } });
+      navigate("/main/payment-success", { state: { plan: "trial" } });
     } else {
-      navigate("/payment-method", { state: { plan: selectedPlan } });
+      navigate("/main/payment-method", { state: { plan: selectedPlan } });
     }
   };
 
@@ -28,7 +28,7 @@ export function PlanSelectionScreen() {
         <div className="flex items-center gap-4 mb-6">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={() => navigate("/subscription")}
+            onClick={() => navigate("/main/subscription")}
             className="p-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm"
           >
             <ArrowLeft className="w-6 h-6 text-[#0F172A]" />

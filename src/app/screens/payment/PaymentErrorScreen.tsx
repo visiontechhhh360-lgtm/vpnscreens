@@ -110,18 +110,17 @@ export function PaymentErrorScreen() {
           className="space-y-3"
         >
           <motion.button
-            onClick={() => navigate("/payment-method")}
+            onClick={() => navigate("/main/payment-method")}
             whileTap={{ scale: 0.97 }}
-            className="w-full h-14 bg-[#22C55E] text-white rounded-xl font-medium shadow-lg shadow-[#22C55E]/30 flex items-center justify-center gap-2"
+            className="w-full max-w-sm bg-gradient-to-r from-[#3B82F6] to-[#2563EB] text-white rounded-xl p-4 font-medium shadow-xl shadow-blue-500/30"
           >
-            <RefreshCw className="w-5 h-5" />
-            <span>Try Again</span>
+            Try Different Payment Method
           </motion.button>
 
           <motion.button
-            onClick={() => navigate("/contact-support")}
+            onClick={() => navigate("/main/contact-support")}
             whileTap={{ scale: 0.97 }}
-            className="w-full h-14 bg-white/80 backdrop-blur-sm border-2 border-[#E2E8F0] text-[#0F172A] rounded-xl font-medium"
+            className="w-full max-w-sm bg-white text-[#3B82F6] rounded-xl p-4 border-2 border-[#3B82F6]/20 font-medium"
           >
             Contact Support
           </motion.button>

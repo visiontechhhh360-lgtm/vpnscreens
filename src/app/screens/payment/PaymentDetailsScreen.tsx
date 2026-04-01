@@ -80,7 +80,7 @@ export function PaymentDetailsScreen() {
 
   const handleContinue = () => {
     if (validateForm()) {
-      navigate("/payment-checkout", { state: { plan, method, cardNumber } });
+      navigate("/main/payment-checkout", { state: { plan, method, cardNumber } });
     }
   };
 

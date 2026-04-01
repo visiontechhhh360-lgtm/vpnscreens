@@ -59,13 +59,13 @@ export function ForgotPasswordScreen() {
   };
 
   return (
-    <div className="h-full flex flex-col px-6 py-12">
+    <div className="h-full flex flex-col px-6 py-12 bg-background">
       {step !== "success" && (
         <button
           onClick={() => (step === "email" ? navigate("/auth/login") : setStep("email"))}
           className="self-start mb-8"
         >
-          <ArrowLeft className="w-6 h-6 text-[#0F172A]" />
+          <ArrowLeft className="w-6 h-6 text-foreground" />
         </button>
       )}
 
@@ -77,17 +77,17 @@ export function ForgotPasswordScreen() {
           data-step="email"
         >
           <div className="flex-1">
-            <h1 className="text-3xl text-[#0F172A] mb-2">Forgot Password?</h1>
-            <p className="text-[#64748B] mb-8">Enter your email to reset your password</p>
+            <h1 className="text-3xl text-foreground mb-2">Forgot Password?</h1>
+            <p className="text-muted-foreground mb-8">Enter your email to reset your password</p>
 
             <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#64748B]" />
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email address"
-                className="w-full h-14 pl-12 pr-4 bg-white border border-[#E2E8F0] rounded-xl text-[#0F172A] placeholder:text-[#64748B] focus:outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20 transition-all"
+                className="w-full h-14 pl-12 pr-4 bg-card border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20 transition-all"
               />
             </div>
           </div>
@@ -111,8 +111,8 @@ export function ForgotPasswordScreen() {
           data-step="otp"
         >
           <div className="flex-1">
-            <h1 className="text-3xl text-[#0F172A] mb-2">Verification</h1>
-            <p className="text-[#64748B] mb-8">Enter the 6-digit code sent to {email}</p>
+            <h1 className="text-3xl text-foreground mb-2">Verification</h1>
+            <p className="text-muted-foreground mb-8">Enter the 6-digit code sent to {email}</p>
 
             <div className="flex justify-center">
               <InputOTP maxLength={6} value={otp} onChange={setOtp}>
@@ -147,29 +147,29 @@ export function ForgotPasswordScreen() {
           data-step="password"
         >
           <div className="flex-1">
-            <h1 className="text-3xl text-[#0F172A] mb-2">Reset Password</h1>
-            <p className="text-[#64748B] mb-8">Create a new password</p>
+            <h1 className="text-3xl text-foreground mb-2">Reset Password</h1>
+            <p className="text-muted-foreground mb-8">Create a new password</p>
 
             <div className="space-y-4">
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#64748B]" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="New Password"
-                  className="w-full h-14 pl-12 pr-4 bg-white border border-[#E2E8F0] rounded-xl text-[#0F172A] placeholder:text-[#64748B] focus:outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20 transition-all"
+                  className="w-full h-14 pl-12 pr-4 bg-card border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20 transition-all"
                 />
               </div>
 
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#64748B]" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <input
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="Confirm Password"
-                  className="w-full h-14 pl-12 pr-4 bg-white border border-[#E2E8F0] rounded-xl text-[#0F172A] placeholder:text-[#64748B] focus:outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20 transition-all"
+                  className="w-full h-14 pl-12 pr-4 bg-card border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20 transition-all"
                 />
               </div>
             </div>
@@ -201,8 +201,8 @@ export function ForgotPasswordScreen() {
           >
             <Check className="w-12 h-12 text-white" />
           </motion.div>
-          <h1 className="text-3xl text-[#0F172A] mb-2">Password Reset!</h1>
-          <p className="text-[#64748B]">You can now login with your new password</p>
+          <h1 className="text-3xl text-foreground mb-2">Password Reset!</h1>
+          <p className="text-muted-foreground">You can now login with your new password</p>
         </motion.div>
       )}
     </div>

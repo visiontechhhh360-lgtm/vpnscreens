@@ -2,7 +2,6 @@ import { motion } from "motion/react";
 import { ArrowRight, Zap } from "lucide-react";
 
 // Import all actual screen components
-import { SplashScreen } from "../splash/SplashScreen";
 import { LoginScreen } from "../auth/LoginScreen";
 import { HomeScreen } from "../home/HomeScreen";
 import { ServersScreen } from "../servers/ServersScreen";
@@ -11,6 +10,7 @@ import { AccountScreen } from "../account/AccountScreen";
 import { SubscriptionScreen } from "../subscription/SubscriptionScreen";
 import { SetupDevicesScreen } from "../setup/SetupDevicesScreen";
 import { RateUsScreen } from "../rate/RateUsScreen";
+import { SplitTunnelingScreen } from "../settings/SplitTunnelingScreen";
 import { PlanSelectionScreen } from "../payment/PlanSelectionScreen";
 import { PaymentMethodScreen } from "../payment/PaymentMethodScreen";
 import { PaymentDetailsScreen } from "../payment/PaymentDetailsScreen";
@@ -24,6 +24,7 @@ import { HelpCenterScreen } from "../support/HelpCenterScreen";
 
 // Import static previews for multi-step flows
 import {
+  SplashScreenPreview,
   CreateAccountEmailPreview,
   CreateAccountOTPPreview,
   CreateAccountPasswordPreview,
@@ -43,7 +44,7 @@ export function UXMapScreen() {
   // All screens organized in flow order
   const flowScreens = {
     start: [
-      { id: "splash", name: "Splash Screen", component: SplashScreen, color: "#6366F1" },
+      { id: "splash", name: "Splash Screen", component: SplashScreenPreview, color: "#6366F1" },
     ],
     auth: [
       { id: "login", name: "Login", component: LoginScreen, color: "#3B82F6" },
@@ -74,6 +75,7 @@ export function UXMapScreen() {
       { id: "subscription", name: "Subscription", component: SubscriptionScreen, color: "#8B5CF6" },
       { id: "setup-devices", name: "Setup Devices", component: SetupDevicesScreen, color: "#8B5CF6" },
       { id: "rate-us", name: "Rate Us", component: RateUsScreen, color: "#8B5CF6" },
+      { id: "split-tunneling", name: "Split Tunneling", component: SplitTunnelingScreen, color: "#8B5CF6" },
     ],
     support: [
       { id: "contact-support", name: "Contact Support", component: ContactSupportScreen, color: "#EC4899" },
@@ -145,9 +147,9 @@ export function UXMapScreen() {
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#22C55E] to-[#16A34A] flex items-center justify-center shadow-lg">
               <Zap className="w-6 h-6 text-white" />
             </div>
-            <h1 className="text-3xl font-bold text-[#0F172A]">PureVPN VT - Premium Flow Board</h1>
+            <h1 className="text-3xl font-bold text-[#0F172A]">WeeTee360 VPN - Premium Flow Board</h1>
           </div>
-          <p className="text-sm text-[#64748B]">Complete user journey • 25 screens • Live previews</p>
+          <p className="text-sm text-[#64748B]">Complete user journey • 26 screens • Live previews</p>
         </motion.div>
 
         {/* Flow Board */}
@@ -167,7 +169,7 @@ export function UXMapScreen() {
           </motion.div>
 
           {/* Row 2: Authentication Flow */}
-          <motion.div
+  <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -192,7 +194,6 @@ export function UXMapScreen() {
                   <ArrowRight className="w-3 h-3 text-[#64748B]" />
                   <ConnectionLine />
                 </div>
-              
 
               {/* Create Account Flow */}
               <div className="flex flex-col items-center gap-4">
@@ -200,13 +201,13 @@ export function UXMapScreen() {
                   <p className="text-[10px] font-semibold text-[#3B82F6] mb-2">Sign Up Flow</p>
                 </div>
                 <div className="flex items-center gap-2">
-  {flowScreens.auth.slice(1, 4).map((screen, idx) => (
-    <div key={screen.id} className="flex items-center gap-2">
-      <MiniScreen screen={screen} />
-      {idx < 2 && <ArrowRight className="w-3 h-3 text-[#94A3B8]" />}
-    </div>
-  ))}
-</div>
+                  {flowScreens.auth.slice(1, 4).map((screen, idx) => (
+                    <div key={screen.id} className="flex items-center gap-2">
+                      <MiniScreen screen={screen} />
+                      {idx < 2 && <ArrowRight className="w-3 h-3 text-[#94A3B8]" />}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -374,9 +375,9 @@ export function UXMapScreen() {
                 { label: "Auth", count: 7, color: "#3B82F6" },
                 { label: "Core", count: 3, color: "#22C55E" },
                 { label: "Payment", count: 8, color: "#F59E0B" },
-                { label: "Features", count: 4, color: "#8B5CF6" },
+                { label: "Features", count: 5, color: "#8B5CF6" },
                 { label: "Support", count: 2, color: "#EC4899" },
-                { label: "Total", count: 25, color: "#0F172A" },
+                { label: "Total", count: 26, color: "#0F172A" },
               ].map((item) => (
                 <div
                   key={item.label}

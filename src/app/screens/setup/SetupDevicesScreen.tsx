@@ -64,7 +64,7 @@ export function SetupDevicesScreen() {
       <div className="relative z-10 flex flex-col h-full px-6 py-8 pb-4">
       {/* Header */}
       <div className="flex items-center gap-4 mb-6">
-        <button onClick={() => navigate("/settings")} className="p-2">
+        <button onClick={() => navigate("/main/settings")} className="p-2">
           <ArrowLeft className="w-6 h-6 text-[#0F172A]" />
         </button>
         <div>

@@ -14,7 +14,8 @@ import {
   Smartphone,
   Star,
   MessageSquare,
-  BookOpen
+  BookOpen,
+  AppWindow
 } from "lucide-react";
 import { AnimatedBackground } from "../../components/AnimatedBackground";
 
@@ -58,6 +59,7 @@ export function AppFlowScreen() {
     { id: "subscription", name: "Subscription", icon: CreditCard, color: "#8B5CF6" },
     { id: "setup-devices", name: "Setup Devices", icon: Smartphone, color: "#8B5CF6" },
     { id: "rate-us", name: "Rate Us", icon: Star, color: "#8B5CF6" },
+    { id: "split-tunneling", name: "Split Tunneling", icon: AppWindow, color: "#8B5CF6" },
   ];
 
   const supportFlows: FlowCard[] = [
@@ -287,7 +289,7 @@ export function AppFlowScreen() {
             className="grid grid-cols-3 gap-3"
           >
             <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-[#E2E8F0] p-3 text-center">
-              <p className="text-2xl font-bold text-[#0F172A]">21</p>
+              <p className="text-2xl font-bold text-[#0F172A]">22</p>
               <p className="text-xs text-[#64748B]">Total Screens</p>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-[#E2E8F0] p-3 text-center">
@@ -295,7 +297,7 @@ export function AppFlowScreen() {
               <p className="text-xs text-[#64748B]">Main Flows</p>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-[#E2E8F0] p-3 text-center">
-              <p className="text-2xl font-bold text-[#0F172A]">16</p>
+              <p className="text-2xl font-bold text-[#0F172A]">17</p>
               <p className="text-xs text-[#64748B]">Connections</p>
             </div>
           </motion.div>

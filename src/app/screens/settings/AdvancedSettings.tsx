@@ -70,14 +70,14 @@ export function AdvancedSettings() {
       className="space-y-4"
     >
       {/* Connection Protocols */}
-      <div className="bg-white rounded-xl p-4 border border-[#E2E8F0]">
+      <div className="bg-card rounded-xl p-4 border border-border">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 bg-[#3B82F6]/10 rounded-full flex items-center justify-center">
             <Network className="w-5 h-5 text-[#3B82F6]" />
           </div>
           <div>
-            <p className="text-[#0F172A] font-medium">Connection Protocol</p>
-            <p className="text-sm text-[#64748B]">Select VPN protocol</p>
+            <p className="text-foreground font-medium">Connection Protocol</p>
+            <p className="text-sm text-muted-foreground">Select VPN protocol</p>
           </div>
         </div>
 
@@ -93,8 +93,8 @@ export function AdvancedSettings() {
               <div key={option.value} className="flex items-center space-x-3 p-2 rounded-lg">
                 <RadioGroupItem value={option.value} id={option.value} />
                 <Label htmlFor={option.value} className="flex-1 cursor-pointer">
-                  <p className="text-[#0F172A]">{option.label}</p>
-                  <p className="text-sm text-[#64748B]">{option.description}</p>
+                  <p className="text-foreground">{option.label}</p>
+                  <p className="text-sm text-muted-foreground">{option.description}</p>
                 </Label>
               </div>
             ))}
@@ -103,14 +103,14 @@ export function AdvancedSettings() {
       </div>
 
       {/* Automatic Port */}
-      <div className="bg-white rounded-xl p-4 border border-[#E2E8F0] flex items-center justify-between">
+      <div className="bg-card rounded-xl p-4 border border-border flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-[#22C55E]/10 rounded-full flex items-center justify-center">
             <ToggleRight className="w-5 h-5 text-[#22C55E]" />
           </div>
           <div>
-            <p className="text-[#0F172A] font-medium">Automatic Port</p>
-            <p className="text-sm text-[#64748B]">Auto-select best port</p>
+            <p className="text-foreground font-medium">Automatic Port</p>
+            <p className="text-sm text-muted-foreground">Auto-select best port</p>
           </div>
         </div>
         <Switch checked={autoPort} onCheckedChange={setAutoPort} />
@@ -119,29 +119,29 @@ export function AdvancedSettings() {
       {/* Port Selection */}
       <button
         onClick={() => setShowPortModal(true)}
-        className="w-full bg-white rounded-xl p-4 border border-[#E2E8F0] flex items-center justify-between"
+        className="w-full bg-card rounded-xl p-4 border border-border flex items-center justify-between"
       >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-[#8B5CF6]/10 rounded-full flex items-center justify-center">
             <SettingsIcon className="w-5 h-5 text-[#8B5CF6]" />
           </div>
           <div className="text-left">
-            <p className="text-[#0F172A] font-medium">Port Selection</p>
-            <p className="text-sm text-[#64748B]">Set custom port</p>
+            <p className="text-foreground font-medium">Port Selection</p>
+            <p className="text-sm text-muted-foreground">Set custom port</p>
           </div>
         </div>
-        <ChevronRight className="w-5 h-5 text-[#64748B]" />
+        <ChevronRight className="w-5 h-5 text-muted-foreground" />
       </button>
 
       {/* Fallback Connection */}
-      <div className="bg-white rounded-xl p-4 border border-[#E2E8F0] flex items-center justify-between">
+      <div className="bg-card rounded-xl p-4 border border-border flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-[#F59E0B]/10 rounded-full flex items-center justify-center">
             <RefreshCw className="w-5 h-5 text-[#F59E0B]" />
           </div>
           <div>
-            <p className="text-[#0F172A] font-medium">Fallback Connection</p>
-            <p className="text-sm text-[#64748B]">Auto-retry on failure</p>
+            <p className="text-foreground font-medium">Fallback Connection</p>
+            <p className="text-sm text-muted-foreground">Auto-retry on failure</p>
           </div>
         </div>
         <Switch checked={fallbackConnection} onCheckedChange={setFallbackConnection} />
@@ -149,33 +149,33 @@ export function AdvancedSettings() {
 
       {/* Split Tunneling */}
       <button
-        onClick={() => navigate("/settings")}
-        className="w-full bg-white rounded-xl p-4 border border-[#E2E8F0] flex items-center justify-between"
+        onClick={() => navigate("/main/split-tunneling")}
+        className="w-full bg-card rounded-xl p-4 border border-border flex items-center justify-between"
       >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-[#EC4899]/10 rounded-full flex items-center justify-center">
             <AppWindow className="w-5 h-5 text-[#EC4899]" />
           </div>
           <div className="text-left">
-            <p className="text-[#0F172A] font-medium">Split Tunneling</p>
-            <p className="text-sm text-[#64748B]">Select apps to exclude</p>
+            <p className="text-foreground font-medium">Split Tunneling</p>
+            <p className="text-sm text-muted-foreground">Select apps to exclude</p>
           </div>
         </div>
-        <ChevronRight className="w-5 h-5 text-[#64748B]" />
+        <ChevronRight className="w-5 h-5 text-muted-foreground" />
       </button>
 
       {/* Clear Preferences */}
       <button
         onClick={() => setShowClearModal(true)}
-        className="w-full bg-white rounded-xl p-4 border border-[#E2E8F0] flex items-center justify-between"
+        className="w-full bg-card rounded-xl p-4 border border-border flex items-center justify-between"
       >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-[#EF4444]/10 rounded-full flex items-center justify-center">
             <Trash2 className="w-5 h-5 text-[#EF4444]" />
           </div>
           <div className="text-left">
-            <p className="text-[#0F172A] font-medium">Clear Preferences</p>
-            <p className="text-sm text-[#64748B]">Reset all settings</p>
+            <p className="text-foreground font-medium">Clear Preferences</p>
+            <p className="text-sm text-muted-foreground">Reset all settings</p>
           </div>
         </div>
       </button>
@@ -193,12 +193,12 @@ export function AdvancedSettings() {
               value={customPort}
               onChange={(e) => setCustomPort(e.target.value)}
               placeholder="e.g., 8080"
-              className="w-full h-12 px-4 bg-white border border-[#E2E8F0] rounded-lg text-[#0F172A] placeholder:text-[#64748B] focus:outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20"
+              className="w-full h-12 px-4 bg-card border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20"
             />
             <div className="flex gap-2">
               <button
                 onClick={() => setShowPortModal(false)}
-                className="flex-1 h-12 rounded-lg border border-[#E2E8F0] text-[#0F172A]"
+                className="flex-1 h-12 rounded-lg border border-border text-foreground"
               >
                 Cancel
               </button>
@@ -225,7 +225,7 @@ export function AdvancedSettings() {
           <div className="flex gap-2">
             <button
               onClick={() => setShowReconnectModal(false)}
-              className="flex-1 h-12 rounded-lg border border-[#E2E8F0] text-[#0F172A]"
+              className="flex-1 h-12 rounded-lg border border-border text-foreground"
             >
               Cancel
             </button>
@@ -251,7 +251,7 @@ export function AdvancedSettings() {
           <div className="flex gap-2">
             <button
               onClick={() => setShowClearModal(false)}
-              className="flex-1 h-12 rounded-lg border border-[#E2E8F0] text-[#0F172A]"
+              className="flex-1 h-12 rounded-lg border border-border text-foreground"
             >
               Cancel
             </button>

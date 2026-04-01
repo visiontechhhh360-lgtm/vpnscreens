@@ -25,7 +25,7 @@ export function LoginScreen() {
     try {
       await login(email, password);
       toast.success("Welcome back!");
-      navigate("/home");
+      navigate("/main/home");
     } catch (error) {
       toast.error("Invalid credentials");
     } finally {
@@ -34,7 +34,7 @@ export function LoginScreen() {
   };
 
   return (
-    <div className="h-full flex flex-col relative overflow-hidden">
+    <div className="h-full flex flex-col relative overflow-hidden bg-background">
       <AnimatedBackground variant="green" />
       
       <div className="relative z-10 flex flex-col justify-between h-full px-6 py-12">
@@ -47,8 +47,16 @@ export function LoginScreen() {
         <div className="w-20 h-20 bg-gradient-to-br from-[#22C55E] to-[#16A34A] rounded-3xl flex items-center justify-center mb-6 shadow-2xl shadow-[#22C55E]/30">
           <Shield className="w-10 h-10 text-white" />
         </div>
-        <h1 className="text-3xl text-[#0F172A] mb-2">Welcome Back</h1>
-        <p className="text-[#64748B]">Login to continue</p>
+        
+        {/* App Name */}
+        <div className="flex items-baseline gap-1 mb-4">
+          <span className="text-2xl font-bold text-foreground">WeeTee</span>
+          <span className="text-2xl font-bold text-[#22C55E]">360</span>
+          <span className="text-base text-muted-foreground ml-1">VPN</span>
+        </div>
+        
+        <h1 className="text-3xl text-foreground mb-2">Welcome Back</h1>
+        <p className="text-muted-foreground">Login to continue</p>
       </motion.div>
 
       <motion.form
@@ -60,29 +68,29 @@ export function LoginScreen() {
       >
         <div className="space-y-4">
           <div className="relative">
-            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#64748B]" />
+            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email address"
-              className="w-full h-14 pl-12 pr-4 bg-white border border-[#E2E8F0] rounded-xl text-[#0F172A] placeholder:text-[#64748B] focus:outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20 transition-all"
+              className="w-full h-14 pl-12 pr-4 bg-card border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20 transition-all"
             />
           </div>
 
           <div className="relative">
-            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#64748B]" />
+            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <input
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="w-full h-14 pl-12 pr-12 bg-white border border-[#E2E8F0] rounded-xl text-[#0F172A] placeholder:text-[#64748B] focus:outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20 transition-all"
+              className="w-full h-14 pl-12 pr-12 bg-card border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[#22C55E] focus:ring-2 focus:ring-[#22C55E]/20 transition-all"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-[#64748B]"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground"
             >
               {showPassword ? (
                 <EyeOff className="w-5 h-5" />
@@ -118,7 +126,7 @@ export function LoginScreen() {
         className="text-center space-y-4"
       >
         <div>
-          <span className="text-[#64748B]">Don't have an account? </span>
+          <span className="text-muted-foreground">Don't have an account? </span>
           <button
             onClick={() => navigate("/auth/create-account")}
             className="text-[#22C55E] font-medium"
@@ -132,7 +140,7 @@ export function LoginScreen() {
           onClick={() => navigate("/ux-map")}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full h-12 bg-white/80 backdrop-blur-sm border-2 border-[#3B82F6]/30 rounded-xl flex items-center justify-center gap-2 text-[#3B82F6] font-medium shadow-lg hover:bg-white transition-all"
+          className="w-full h-12 bg-card/80 backdrop-blur-sm border-2 border-[#3B82F6]/30 rounded-xl flex items-center justify-center gap-2 text-[#3B82F6] font-medium shadow-lg hover:bg-card transition-all"
         >
           <Map className="w-5 h-5" />
           <span>View App Flow Map</span>

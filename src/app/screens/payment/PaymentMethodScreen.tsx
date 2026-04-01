@@ -13,7 +13,7 @@ export function PaymentMethodScreen() {
   const [selectedMethod, setSelectedMethod] = useState<PaymentMethod>("card");
 
   const handleContinue = () => {
-    navigate("/payment-details", { state: { plan, method: selectedMethod } });
+    navigate("/main/payment-details", { state: { plan, method: selectedMethod } });
   };
 
   const methods = [

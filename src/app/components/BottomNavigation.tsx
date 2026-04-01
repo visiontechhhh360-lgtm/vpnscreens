@@ -7,9 +7,9 @@ export function BottomNavigation() {
   const navigate = useNavigate();
 
   const tabs = [
-    { id: "servers", icon: Globe, label: "Servers", path: "/servers" },
-    { id: "home", icon: Home, label: "Home", path: "/home" },
-    { id: "settings", icon: Settings, label: "Settings", path: "/settings" },
+    { id: "servers", icon: Globe, label: "Servers", path: "/main/servers" },
+    { id: "home", icon: Home, label: "Home", path: "/main/home" },
+    { id: "settings", icon: Settings, label: "Settings", path: "/main/settings" },
   ];
 
   return (

@@ -22,7 +22,7 @@ export function RateUsScreen() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsSubmitting(false);
     toast.success("Thank you for your feedback!");
-    navigate("/settings");
+    navigate("/main/settings");
   };
 
   return (
@@ -32,7 +32,7 @@ export function RateUsScreen() {
       <div className="relative z-10 flex flex-col h-full px-6 py-8 pb-4">
       {/* Header */}
       <div className="flex items-center gap-4 mb-6">
-        <button onClick={() => navigate("/settings")} className="p-2">
+        <button onClick={() => navigate("/main/settings")} className="p-2">
           <ArrowLeft className="w-6 h-6 text-[#0F172A]" />
         </button>
         <h1 className="text-2xl text-[#0F172A]">Rate Us</h1>
